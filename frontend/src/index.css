@@ -1,0 +1,1992 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc;
+}
+/* =========================================
+   QUIZMASTER LOGIN ANIMATIONS
+========================================= */
+
+.login-container {
+  animation: loginContainerEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes loginContainerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================
+   BRAND ANIMATION
+========================================= */
+
+.login-brand-enter {
+  animation: brandEnter 0.9s ease-out 0.2s both;
+}
+
+@keyframes brandEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================================
+   FORM ANIMATION
+========================================= */
+
+.login-form-enter {
+  animation: formEnter 0.8s ease-out 0.25s both;
+}
+
+@keyframes formEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   BACKGROUND BLOBS
+========================================= */
+
+.login-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.login-blob-one {
+  width: 400px;
+  height: 400px;
+  background: #2563eb;
+  left: -120px;
+  top: -100px;
+  animation: blobOne 12s ease-in-out infinite alternate;
+}
+
+.login-blob-two {
+  width: 350px;
+  height: 350px;
+  background: #7c3aed;
+  right: -100px;
+  top: 20%;
+  animation: blobTwo 15s ease-in-out infinite alternate;
+}
+
+.login-blob-three {
+  width: 300px;
+  height: 300px;
+  background: #06b6d4;
+  bottom: -100px;
+  left: 35%;
+  animation: blobThree 13s ease-in-out infinite alternate;
+}
+
+@keyframes blobOne {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(100px, 80px) scale(1.15);
+  }
+}
+
+@keyframes blobTwo {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-100px, 70px) scale(1.2);
+  }
+}
+
+@keyframes blobThree {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(80px, -80px) scale(1.15);
+  }
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.login-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+
+/* =========================================
+   FLOATING PARTICLES
+========================================= */
+
+.login-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+.particle-1 {
+  left: 15%;
+  top: 25%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  left: 70%;
+  top: 20%;
+  animation-delay: 2s;
+}
+
+.particle-3 {
+  left: 85%;
+  top: 65%;
+  animation-delay: 4s;
+}
+
+.particle-4 {
+  left: 30%;
+  top: 80%;
+  animation-delay: 1s;
+}
+
+.particle-5 {
+  left: 55%;
+  top: 50%;
+  animation-delay: 3s;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-25px);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   BRAIN ANIMATION
+========================================= */
+
+.brain-wrapper {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brain-glow {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(35px);
+  animation: brainGlow 3s ease-in-out infinite;
+}
+
+.brain-circle {
+  position: relative;
+  z-index: 2;
+  width: 110px;
+  height: 110px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  animation: brainFloat 4s ease-in-out infinite;
+}
+
+.brain-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+
+.ring-one {
+  width: 155px;
+  height: 155px;
+  animation: ringRotate 10s linear infinite;
+}
+
+.ring-two {
+  width: 190px;
+  height: 190px;
+  animation: ringRotateReverse 15s linear infinite;
+}
+
+@keyframes brainFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes brainGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ringRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.login-input-wrapper {
+  position: relative;
+}
+
+.login-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 13px 14px 13px 45px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-input:hover {
+  background: white;
+  border-color: #cbd5e1;
+}
+
+.login-input:focus {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.login-input::placeholder {
+  color: #94a3b8;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.login-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: transform 0.6s ease;
+}
+
+.login-button:hover::before {
+  transform: translateX(110%);
+}
+
+
+/* =========================================
+   LOADING SPINNER
+========================================= */
+
+.login-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 9999px;
+  animation: loginSpinner 0.7s linear infinite;
+}
+
+@keyframes loginSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.login-error {
+  animation: errorEnter 0.3s ease-out both;
+}
+
+@keyframes errorEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .login-container,
+  .login-brand-enter,
+  .login-form-enter,
+  .login-blob,
+  .login-particle,
+  .brain-circle,
+  .brain-glow,
+  .brain-ring {
+    animation: none !important;
+  }
+}
+/* =========================================
+   REGISTER PAGE
+========================================= */
+
+.register-container {
+  animation: registerEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes registerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.register-brand-enter,
+.register-form-enter {
+  animation: registerFade 0.8s ease-out 0.2s both;
+}
+
+@keyframes registerFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.register-blob-one {
+  width: 420px;
+  height: 420px;
+  left: -120px;
+  top: -100px;
+  background: #2563eb;
+  animation: registerBlobOne 12s ease-in-out infinite alternate;
+}
+
+.register-blob-two {
+  width: 360px;
+  height: 360px;
+  right: -100px;
+  top: 25%;
+  background: #7c3aed;
+  animation: registerBlobTwo 15s ease-in-out infinite alternate;
+}
+
+.register-blob-three {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: 40%;
+  background: #06b6d4;
+  animation: registerBlobThree 13s ease-in-out infinite alternate;
+}
+
+@keyframes registerBlobOne {
+  to {
+    transform: translate(100px, 80px) scale(1.15);
+  }
+}
+
+@keyframes registerBlobTwo {
+  to {
+    transform: translate(-100px, 70px) scale(1.2);
+  }
+}
+
+@keyframes registerBlobThree {
+  to {
+    transform: translate(80px, -80px) scale(1.15);
+  }
+}
+
+.register-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+.register-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.7);
+  animation: registerParticle 8s ease-in-out infinite;
+}
+
+.register-particle-1 {
+  left: 15%;
+  top: 20%;
+}
+
+.register-particle-2 {
+  left: 75%;
+  top: 25%;
+  animation-delay: 2s;
+}
+
+.register-particle-3 {
+  left: 85%;
+  top: 70%;
+  animation-delay: 4s;
+}
+
+.register-particle-4 {
+  left: 30%;
+  top: 80%;
+  animation-delay: 1s;
+}
+
+.register-particle-5 {
+  left: 55%;
+  top: 50%;
+  animation-delay: 3s;
+}
+
+@keyframes registerParticle {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-25px);
+    opacity: 1;
+  }
+}
+
+.register-icon {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-icon-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(35px);
+  animation: registerGlow 3s ease-in-out infinite;
+}
+
+.register-icon-box {
+  position: relative;
+  z-index: 2;
+  width: 95px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 28px;
+  font-size: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: registerFloat 4s ease-in-out infinite;
+}
+
+@keyframes registerFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes registerGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+.register-input-wrapper {
+  position: relative;
+}
+
+.register-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 12px 14px 12px 45px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.register-input:hover {
+  background: white;
+  border-color: #cbd5e1;
+}
+
+.register-input:focus {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.register-input::placeholder {
+  color: #94a3b8;
+}
+
+.register-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.register-button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: transform 0.6s ease;
+}
+
+.register-button:hover::before {
+  transform: translateX(110%);
+}
+
+.register-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 9999px;
+  animation: registerSpinner 0.7s linear infinite;
+}
+
+@keyframes registerSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.register-error,
+.register-success {
+  animation: registerMessage 0.3s ease-out both;
+}
+
+@keyframes registerMessage {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-container,
+  .register-brand-enter,
+  .register-form-enter,
+  .register-blob,
+  .register-particle,
+  .register-icon-box,
+  .register-icon-glow {
+    animation: none !important;
+  }
+}
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-container {
+  animation: forgotContainerEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes forgotContainerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.forgot-brand-enter,
+.forgot-form-enter {
+  animation: forgotFade 0.8s ease-out 0.2s both;
+}
+
+@keyframes forgotFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forgot-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.forgot-blob-one {
+  width: 420px;
+  height: 420px;
+  left: -120px;
+  top: -100px;
+  background: #2563eb;
+  animation: forgotBlobOne 12s ease-in-out infinite alternate;
+}
+
+.forgot-blob-two {
+  width: 360px;
+  height: 360px;
+  right: -100px;
+  top: 25%;
+  background: #7c3aed;
+  animation: forgotBlobTwo 15s ease-in-out infinite alternate;
+}
+
+.forgot-blob-three {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: 40%;
+  background: #06b6d4;
+  animation: forgotBlobThree 13s ease-in-out infinite alternate;
+}
+
+@keyframes forgotBlobOne {
+  to {
+    transform: translate(100px, 80px) scale(1.15);
+  }
+}
+
+@keyframes forgotBlobTwo {
+  to {
+    transform: translate(-100px, 70px) scale(1.2);
+  }
+}
+
+@keyframes forgotBlobThree {
+  to {
+    transform: translate(80px, -80px) scale(1.15);
+  }
+}
+
+.forgot-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+.forgot-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.7);
+  animation: forgotParticle 8s ease-in-out infinite;
+}
+
+.forgot-particle-1 {
+  left: 15%;
+  top: 20%;
+}
+
+.forgot-particle-2 {
+  left: 75%;
+  top: 25%;
+  animation-delay: 2s;
+}
+
+.forgot-particle-3 {
+  left: 85%;
+  top: 70%;
+  animation-delay: 4s;
+}
+
+.forgot-particle-4 {
+  left: 30%;
+  top: 80%;
+  animation-delay: 1s;
+}
+
+.forgot-particle-5 {
+  left: 55%;
+  top: 50%;
+  animation-delay: 3s;
+}
+
+@keyframes forgotParticle {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-25px);
+    opacity: 1;
+  }
+}
+
+.forgot-icon-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgot-icon-glow {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(35px);
+  animation: forgotGlow 3s ease-in-out infinite;
+}
+
+.forgot-icon-circle {
+  position: relative;
+  z-index: 2;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+  font-size: 52px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: forgotFloat 4s ease-in-out infinite;
+}
+
+.forgot-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+
+.forgot-ring-one {
+  width: 150px;
+  height: 150px;
+  animation: forgotRing 10s linear infinite;
+}
+
+.forgot-ring-two {
+  width: 180px;
+  height: 180px;
+  animation: forgotRingReverse 15s linear infinite;
+}
+
+@keyframes forgotFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes forgotGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes forgotRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes forgotRingReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.forgot-input-wrapper {
+  position: relative;
+}
+
+.forgot-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 13px 14px 13px 45px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.forgot-input:hover {
+  background: white;
+  border-color: #cbd5e1;
+}
+
+.forgot-input:focus {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.forgot-input::placeholder {
+  color: #94a3b8;
+}
+
+.forgot-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.forgot-button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.forgot-button:hover {
+  transform: translateY(-2px);
+}
+
+.forgot-button:active {
+  transform: translateY(0);
+}
+
+.forgot-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: transform 0.6s ease;
+}
+
+.forgot-button:hover::before {
+  transform: translateX(110%);
+}
+
+.forgot-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 9999px;
+  animation: forgotSpinner 0.7s linear infinite;
+}
+
+@keyframes forgotSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.forgot-message {
+  animation: forgotMessage 0.3s ease-out both;
+}
+
+@keyframes forgotMessage {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forgot-container,
+  .forgot-brand-enter,
+  .forgot-form-enter,
+  .forgot-blob,
+  .forgot-particle,
+  .forgot-icon-circle,
+  .forgot-icon-glow,
+  .forgot-ring {
+    animation: none !important;
+  }
+}
+/* =========================================
+   RESET PASSWORD
+========================================= */
+
+.reset-container {
+  animation: resetEnter 0.7s ease-out both;
+}
+
+@keyframes resetEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reset-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+.reset-blob-one {
+  width: 420px;
+  height: 420px;
+  left: -120px;
+  top: -100px;
+  background: #2563eb;
+  animation: resetBlobOne 12s ease-in-out infinite alternate;
+}
+
+.reset-blob-two {
+  width: 360px;
+  height: 360px;
+  right: -100px;
+  top: 25%;
+  background: #7c3aed;
+  animation: resetBlobTwo 15s ease-in-out infinite alternate;
+}
+
+.reset-blob-three {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: 40%;
+  background: #06b6d4;
+  animation: resetBlobThree 13s ease-in-out infinite alternate;
+}
+
+@keyframes resetBlobOne {
+  to {
+    transform: translate(100px, 80px) scale(1.15);
+  }
+}
+
+@keyframes resetBlobTwo {
+  to {
+    transform: translate(-100px, 70px) scale(1.2);
+  }
+}
+
+@keyframes resetBlobThree {
+  to {
+    transform: translate(80px, -80px) scale(1.15);
+  }
+}
+
+.reset-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+}
+
+.reset-lock-icon {
+  position: relative;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 52px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  animation: resetFloat 4s ease-in-out infinite;
+}
+
+@keyframes resetFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+.reset-input-wrapper {
+  position: relative;
+}
+
+.reset-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 13px 45px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.reset-input:hover {
+  background: white;
+  border-color: #cbd5e1;
+}
+
+.reset-input:focus {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.reset-input::placeholder {
+  color: #94a3b8;
+}
+
+.reset-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reset-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: resetSpin 0.7s linear infinite;
+}
+
+@keyframes resetSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reset-message {
+  animation: resetMessage 0.3s ease-out both;
+}
+
+@keyframes resetMessage {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   STUDENT QUIZ LIBRARY
+========================================= */
+
+.student-page-enter {
+  animation: studentPageEnter 0.5s ease-out both;
+}
+
+@keyframes studentPageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px);
+  border-color: #dbeafe;
+  box-shadow:
+    0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.quiz-brain-icon {
+  animation: quizBrainFloat 4s ease-in-out infinite;
+}
+
+@keyframes quizBrainFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+}
+/* =========================================
+   TAKE QUIZ
+========================================= */
+
+.quiz-option {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.quiz-option:hover {
+  transform: translateY(-1px);
+}
+
+.submit-modal {
+  animation: submitModalEnter 0.25s ease-out both;
+}
+
+@keyframes submitModalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* =========================================
+   QUIZ RESULT
+========================================= */
+
+.result-hero {
+  animation: resultHeroEnter 0.7s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes resultHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.result-trophy {
+  animation: resultTrophy 4s ease-in-out
+    infinite;
+}
+
+@keyframes resultTrophy {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.result-score {
+  animation: resultScore 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.2s both;
+}
+
+@keyframes resultScore {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  border-color: #dbeafe;
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.result-progress {
+  animation: resultProgress 1.2s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.4s both;
+  transform-origin: left;
+}
+
+@keyframes resultProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.result-error-card {
+  animation: resultErrorEnter 0.4s ease-out both;
+}
+
+@keyframes resultErrorEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   ANSWER REVIEW
+========================================= */
+
+.answer-review-hero {
+  animation: answerReviewHero 0.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes answerReviewHero {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.answer-summary-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.answer-summary-card:hover {
+  transform: translateY(-4px);
+  border-color: #dbeafe;
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.answer-review-card {
+  animation: answerCardEnter 0.45s ease-out both;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.answer-review-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.07);
+}
+
+@keyframes answerCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answer-correct-bar,
+.answer-incorrect-bar {
+  animation: answerBarEnter 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+  transform-origin: left;
+}
+
+@keyframes answerBarEnter {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.answer-review-error {
+  animation: answerErrorEnter 0.4s ease-out both;
+}
+
+@keyframes answerErrorEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-modal {
+  animation: reviewModalEnter 0.25s ease-out both;
+}
+
+@keyframes reviewModalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* =========================================
+   ATTEMPT HISTORY
+========================================= */
+
+.history-hero {
+  animation: historyHeroEnter 0.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes historyHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.history-stat {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.history-stat:hover {
+  transform: translateY(-4px);
+  border-color: #dbeafe;
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.attempt-card {
+  animation: attemptCardEnter 0.45s ease-out both;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.attempt-card:hover {
+  transform: translateY(-2px);
+  border-color: #dbeafe;
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.07);
+}
+
+@keyframes attemptCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.attempt-progress {
+  animation: attemptProgress 1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+  transform-origin: left;
+}
+
+@keyframes attemptProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.history-error {
+  animation: historyErrorEnter 0.4s ease-out both;
+}
+
+@keyframes historyErrorEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.question-list-hero {
+  animation: questionHeroEnter 0.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes questionHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.question-quiz-card {
+  animation: questionCardEnter 0.45s ease-out both;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.question-quiz-card:hover {
+  transform: translateY(-5px);
+  border-color: #bfdbfe;
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.09);
+}
+
+@keyframes questionCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.analytics-page {
+  animation: analyticsPageIn 0.6s ease-out both;
+}
+
+@keyframes analyticsPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analytics-hero {
+  animation: heroIn 0.7s ease-out both;
+}
+
+.analytics-hero-orb {
+  animation: orbFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-20px, 20px) scale(1.08);
+  }
+}
+
+.analytics-stat-card {
+  animation: statCardIn 0.55s ease-out both;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.analytics-stat-card:hover {
+  transform: translateY(-6px);
+  border-color: #bfdbfe;
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+@keyframes statCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.analytics-panel {
+  animation: panelIn 0.65s ease-out both;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analytics-icon {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.analytics-bar {
+  transform-origin: left;
+  animation: barGrow 1s cubic-bezier(
+    0.22,
+    1,
+    0.36,
+    1
+  ) both;
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.analytics-donut {
+  animation: donutAppear 0.9s ease-out both;
+}
+
+@keyframes donutAppear {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-90deg) scale(1);
+  }
+}
+
+.analytics-ranking {
+  animation: rankingIn 0.5s ease-out both;
+}
+
+@keyframes rankingIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.analytics-category-card {
+  animation: categoryIn 0.5s ease-out both;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.analytics-category-card:hover {
+  transform: translateY(-4px);
+  background-color: white;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+@keyframes categoryIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics-page,
+  .analytics-hero,
+  .analytics-stat-card,
+  .analytics-panel,
+  .analytics-icon,
+  .analytics-bar,
+  .analytics-donut,
+  .analytics-ranking,
+  .analytics-category-card,
+  .analytics-hero-orb {
+    animation: none;
+    transition: none;
+  }
+}
