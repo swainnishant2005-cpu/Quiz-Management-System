@@ -9,8 +9,8 @@ from .views import (
     LeaderboardView,
     AdminAttemptListView,
     AdminAttemptDetailView,
+    CertificateDownloadView,
 )
-
 
 urlpatterns = [
 
@@ -63,4 +63,9 @@ urlpatterns = [
         AdminAttemptDetailView.as_view(),
         name="admin-attempt-detail",
     ),
+    path(
+    "attempts/<int:attempt_id>/certificate/",
+    CertificateDownloadView.as_view(),
+    name="certificate-download",
+),
 ]

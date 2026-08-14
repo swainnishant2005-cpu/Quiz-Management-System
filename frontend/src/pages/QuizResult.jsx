@@ -47,6 +47,128 @@ function QuizResult() {
     }
   };
 
+
+  /* =========================================
+     DOWNLOAD CERTIFICATE
+  ========================================= */
+
+  const downloadCertificate = async () => {
+  try {
+    setError("");
+
+    // Cache-busting query parameter
+    const cacheBuster = Date.now();
+
+    const response = await api.get(
+      `/attempts/${attemptId}/certificate/?_=${cacheBuster}`,
+      {
+        responseType: "blob",
+      }
+    );
+
+    const contentType =
+      response.headers?.["content-type"] || "";
+
+    // Make sure the backend returned a PDF
+    if (
+      !contentType.includes("application/pdf") &&
+      response.data?.type !== "application/pdf"
+    ) {
+      let message =
+        "The server did not return a valid PDF certificate.";
+
+      try {
+        const text = await response.data.text();
+
+        if (text) {
+          try {
+            const json = JSON.parse(text);
+
+            message =
+              json.error ||
+              json.detail ||
+              message;
+          } catch {
+            // Keep default message
+          }
+        }
+      } catch {
+        // Keep default message
+      }
+
+      throw new Error(message);
+    }
+
+    const blob = new Blob(
+      [response.data],
+      {
+        type: "application/pdf",
+      }
+    );
+
+    const url =
+      window.URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      `QuizMaster-Certificate-${attemptId}-${cacheBuster}.pdf`;
+
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    setTimeout(() => {
+      window.URL.revokeObjectURL(url);
+    }, 1000);
+
+  } catch (error) {
+    console.error(
+      "Certificate download error:",
+      error
+    );
+
+    let message =
+      "Unable to download certificate. Please try again.";
+
+    if (error?.message) {
+      message = error.message;
+    }
+
+    if (error?.response?.data instanceof Blob) {
+      try {
+        const errorText =
+          await error.response.data.text();
+
+        if (errorText) {
+          try {
+            const errorJson =
+              JSON.parse(errorText);
+
+            message =
+              errorJson.error ||
+              errorJson.detail ||
+              message;
+          } catch {
+            // Keep existing message
+          }
+        }
+      } catch {
+        // Keep existing message
+      }
+    }
+
+    setError(message);
+  }
+};
+
   /* =========================================
      LOADING
   ========================================= */
@@ -77,11 +199,12 @@ function QuizResult() {
     );
   }
 
+
   /* =========================================
      ERROR
   ========================================= */
 
-  if (error) {
+  if (error && !result) {
     return (
       <div className="min-h-screen bg-slate-100 flex items-center justify-center px-6">
 
@@ -111,6 +234,7 @@ function QuizResult() {
       </div>
     );
   }
+
 
   /* =========================================
      CALCULATIONS
@@ -153,24 +277,19 @@ function QuizResult() {
 
   const correctPercentage =
     totalQuestions > 0
-      ? (correctAnswers /
-          totalQuestions) *
-        100
+      ? (correctAnswers / totalQuestions) * 100
       : 0;
 
   const incorrectPercentage =
     totalQuestions > 0
-      ? (incorrectAnswers /
-          totalQuestions) *
-        100
+      ? (incorrectAnswers / totalQuestions) * 100
       : 0;
 
   const unansweredPercentage =
     totalQuestions > 0
-      ? (unanswered /
-          totalQuestions) *
-        100
+      ? (unanswered / totalQuestions) * 100
       : 0;
+
 
   /* =========================================
      MAIN UI
@@ -294,8 +413,10 @@ function QuizResult() {
 
 
               <p className="mt-2 max-w-xl text-sm text-white/80 sm:text-base">
+
                 {result?.quiz_title ||
                   "Quiz Result"}
+
               </p>
 
 
@@ -308,7 +429,9 @@ function QuizResult() {
                 </p>
 
                 <p className="result-score mt-1 text-6xl font-black tracking-tight sm:text-7xl">
+
                   {percentage.toFixed(2)}%
+
                 </p>
 
               </div>
@@ -403,9 +526,11 @@ function QuizResult() {
                   : "bg-red-100 text-red-700"
               }`}
             >
+
               {passed
                 ? "PASSED"
                 : "FAILED"}
+
             </span>
 
           </div>
@@ -590,9 +715,7 @@ function QuizResult() {
 
             <InfoRow
               label="Time Taken"
-              value={formatTime(
-                timeTaken
-              )}
+              value={formatTime(timeTaken)}
               icon="⏱"
             />
 
@@ -632,6 +755,42 @@ function QuizResult() {
         <section className="mt-8">
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+            {/* Certificate */}
+
+            {passed && (
+              <button
+                onClick={downloadCertificate}
+                className="group rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-4 text-left transition hover:-translate-y-1 hover:bg-emerald-100 hover:shadow-lg"
+              >
+
+                <div className="flex items-center gap-4">
+
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-600 text-xl text-white shadow-lg shadow-emerald-600/20">
+                    🏆
+                  </div>
+
+                  <div>
+
+                    <p className="font-bold text-emerald-800">
+                      Download Certificate
+                    </p>
+
+                    <p className="mt-0.5 text-xs text-emerald-600">
+                      Download your achievement certificate
+                    </p>
+
+                  </div>
+
+                  <span className="ml-auto text-lg text-emerald-500 transition-transform group-hover:translate-x-1">
+                    ↓
+                  </span>
+
+                </div>
+
+              </button>
+            )}
+
 
             {/* Review */}
 

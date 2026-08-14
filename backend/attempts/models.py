@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.conf import settings
 from quizzes.models import Quiz
@@ -23,9 +24,17 @@ class Attempt(models.Model):
         related_name="attempts"
     )
 
-    score = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    score = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        default=0
+    )
 
-    percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    percentage = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        default=0
+    )
 
     correct_answers = models.PositiveIntegerField(default=0)
 
@@ -76,3 +85,27 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"{self.attempt.student.username} - {self.question.id}"
+
+
+class Certificate(models.Model):
+    attempt = models.OneToOneField(
+        Attempt,
+        on_delete=models.CASCADE,
+        related_name="certificate"
+    )
+
+    certificate_id = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        editable=False
+    )
+
+    issued_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return (
+            f"Certificate {self.certificate_id} - "
+            f"{self.attempt.student.username}"
+        )
