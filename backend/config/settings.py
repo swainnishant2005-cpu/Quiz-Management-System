@@ -266,31 +266,28 @@ AUTH_USER_MODEL = "accounts.User"
 # ============================================================
 
 CORS_ALLOWED_ORIGINS = [
-
     # Local development
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 
-    # Production Vercel frontend
+    # Vercel production
     "https://quiz-management-system-rho.vercel.app",
-]
 
+    # Current Vercel deployment
+    "https://quiz-management-system-p7wuuyaf9-nishant-ef70.vercel.app",
+]
 
 # ============================================================
 # CSRF TRUSTED ORIGINS
 # ============================================================
 
 CSRF_TRUSTED_ORIGINS = [
-
-    # Local development
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 
-    # Production Vercel frontend
     "https://quiz-management-system-rho.vercel.app",
+    "https://quiz-management-system-p7wuuyaf9-nishant-ef70.vercel.app",
 ]
-
-
 # ============================================================
 # DJANGO REST FRAMEWORK
 # ============================================================
@@ -352,3 +349,6 @@ SECURE_PROXY_SSL_HEADER = (
 # ============================================================
 
 X_FRAME_OPTIONS = "DENY"
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://quiz-management-system-[a-z0-9-]+-nishant-ef70\.vercel\.app$",
+]
